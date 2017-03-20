@@ -1,0 +1,26 @@
+div{
+  font-size: 36px;
+  color: white;
+  text-align: center;
+  width: 345px;
+  height: 35px;
+  padding: 45px;
+  border-width: 0px 15px;
+  border-style: solid;
+  border-color: #4285F4;
+}
+
+.north{
+  background-color: #E67676;
+  border-top-width: 15px;
+}
+.east{
+  background-color: #F2F062;
+}
+.south{
+  background-color: #A9E6E6;
+}
+.west{
+  background-color: #7692E4;
+  border-bottom-width: 15px;
+}

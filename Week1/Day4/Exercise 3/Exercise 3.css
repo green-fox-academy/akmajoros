@@ -1,0 +1,26 @@
+div{
+  width: 345px;
+  height: 36px;
+  padding: 43px 0px;
+  color: white;
+  text-align: center;
+  font-size: 36px;
+  border-color: #4285F4;
+  border-style: solid;
+  border-width: 0px 15px;
+}
+.first, .second{
+  background-color: #E67676;
+}
+.third, .fourth{
+  background-color: #A9E6E6;
+}
+.first, .third{
+  border-top-width: 15px;
+}
+.second, .fourth{
+  border-bottom-width: 15px;
+}
+.second{
+  margin-bottom: 10px;	
+}

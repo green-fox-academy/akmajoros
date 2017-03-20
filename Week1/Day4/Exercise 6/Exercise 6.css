@@ -1,0 +1,13 @@
+div {
+  width: 270px;
+  height: auto;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  margin-left: 45px;
+  border-left-style: solid;
+  border-left-width: 2px;
+  border-left-color: black;
+}
+h1 {
+  margin-left: 45px;
+}
