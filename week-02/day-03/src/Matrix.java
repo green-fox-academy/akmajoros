@@ -4,7 +4,7 @@ public class Matrix {
     a = new int[4][4];
 
     for (int i = 0; i <a.length; i++) {
-      for (int j = 0; j <a.length; j++){
+      for (int j = 0; j <a[i].length; j++){
         if (i == j){
           a[i][j] = 1;
         }
