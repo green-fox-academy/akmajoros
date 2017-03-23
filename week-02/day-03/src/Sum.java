@@ -11,7 +11,7 @@ public class Sum {
     int a2 = 0;
     for(int a = 0; a < number; a++){//a+=(a+1){
       a2 = a + a2;
-      System.out.println(a);
+      //System.out.println(a);
     }
     return a2;
   }
