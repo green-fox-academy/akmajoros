@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class DrawDiamond {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Please type 1 number!");
+    System.out.println("Please give me a number that will define the length of the diamond!");
     int number = scanner.nextInt();
     for (int i = 0; i < number; i++) {
       for (int k = i; k < number; k++) {
