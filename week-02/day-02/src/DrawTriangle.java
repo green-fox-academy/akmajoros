@@ -7,9 +7,9 @@ public class DrawTriangle {
     System.out.println("Please give me a number!");
     int number = scanner.nextInt();
 
-    for (int i = 1; i <= number; i++)
+    for (int i = 0; i < number; i++)
     {
-      for (int j = 1; j <= i; j++)
+      for (int j = 0; j <= i; j++)
       {
         System.out.print("*");
       }
