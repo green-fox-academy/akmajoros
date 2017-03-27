@@ -1,10 +1,9 @@
+import com.sun.corba.se.impl.encoding.OSFCodeSetRegistry;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Lotto {
   public static void main(String[] args) {
@@ -13,6 +12,7 @@ public class Lotto {
     try {
       List<String> lines = Files.readAllLines(filePath);
       HashMap<String, Integer> winnerNumbers = new HashMap<String, Integer>();
+
       for(String line : lines){
         String[] linesArray = line.split(";");
         int sizeTo = linesArray.length;
@@ -25,8 +25,28 @@ public class Lotto {
           }
         }
       }
-      System.out.println(winnerNumbers);
-    } catch (Exception e) {
+      Set<Map.Entry<String, Integer>> set = winnerNumbers.entrySet();
+      List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(
+              set);
+      Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+
+        public int compare(Map.Entry<String, Integer> o1,
+                           Map.Entry<String, Integer> o2) {
+          return o2.getValue().compareTo(o1.getValue());
+        }
+
+      });
+
+      /*for (Map.Entry<String, Integer> entry : list) {
+
+        if (entry.getValue() >= 192) {
+          System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+        Map<Integer, String> reverseMap = new HashMap<>();
+        reverseMap.put(entry.getValue(), entry.getKey());
+      }*/
+    }
+    catch (Exception e) {
       System.out.println("Error occured!");
     }
   }
