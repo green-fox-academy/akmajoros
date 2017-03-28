@@ -1,22 +1,21 @@
 import javax.swing.*;
 
 import java.awt.*;
-import java.util.Scanner;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class GoToCenter {
+public class HorizontalLines {
 
   public static void mainDraw(Graphics graphics){
-    drawing(25, 25, graphics);
-    drawing(25, 200, graphics);
-    drawing(25, 100, graphics);
+    drawingParallel(25, 25, graphics);
+    drawingParallel(100, 100, graphics);
+    drawingParallel(200, 200, graphics);
 
   }
 
-  public static void drawing (int x, int y, Graphics graphics){
-    graphics.setColor(Color.RED);
-    graphics.drawLine(x, y, 150, 150);
+  public static void drawingParallel (int x, int y, Graphics graphics) {
+    graphics.setColor(Color.BLUE);
+    graphics.drawLine(x, y, x + 50, y);
   }
 
   //    Don't touch the code below
