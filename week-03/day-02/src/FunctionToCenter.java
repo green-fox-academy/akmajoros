@@ -6,7 +6,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class FunctionToCenter {
 
-  public static void mainDraw(Graphics graphics){
+  public static void mainDraw(Graphics graphics) {
     drawingLines(0, 0, graphics);
     // create a line drawing function that takes 2 parameters:
     // the x and y coordinates of the line's starting point
@@ -14,10 +14,10 @@ public class FunctionToCenter {
     // fill the canvas with lines from the edges, every 20 px, to the center.
 
 
-
   }
-  public static void drawingLines (int x, int y, Graphics graphics){
-    for (int i = 0; i < 300; i+=20) {
+
+  public static void drawingLines(int x, int y, Graphics graphics) {
+    for (int i = 0; i < 300; i += 20) {
       graphics.setColor(Color.BLACK);
       graphics.drawLine(i, 0, 150, 150);
       graphics.drawLine(0, i, 150, 150);
@@ -28,7 +28,18 @@ public class FunctionToCenter {
 
   }
 
-  //    Don't touch the code below
+  /*public static void drawingLines(int x, int y, Graphics graphics) {
+    int step = 20;
+    for (int i = 0; i < 320; i += step) {
+      graphics.setColor(Color.BLACK);
+      for (int j = 0; j < 320; j += step) {
+        graphics.drawLine(j, i, 150, 150);
+      }
+    }
+  }*/
+
+
+      //    Don't touch the code below
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
     jFrame.setSize(new Dimension(320, 343));
