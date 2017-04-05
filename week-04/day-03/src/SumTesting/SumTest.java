@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SumTest {
   @Test
-  public void sumMethod(){
+  public void sumMethod2(){
     ArrayList<Integer> toAdd = new ArrayList<>();
     Sum sum2 = new Sum();
     toAdd.add(45);
@@ -44,7 +44,8 @@ class SumTest {
   @Test
   public void nullTest(){
     ArrayList<Integer> toAdd = null;
-    assertEquals(null, toAdd);
+    Sum sum2 = new Sum();
+    assertEquals(0, sum2.sumMethod(toAdd));
   }
 
 
