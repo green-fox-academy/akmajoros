@@ -10,11 +10,23 @@ class SumTest {
   @Test
   public void sumMethod(){
     ArrayList<Integer> toAdd = new ArrayList<>();
+    Sum sum2 = new Sum();
     toAdd.add(45);
     toAdd.add(20);
-    Sum sum2 = new Sum();
     assertEquals(64, sum2.sumMethod(toAdd));
   }
 
-  
+  @Test
+  public void emptyList(){
+    ArrayList<Integer> toAdd = new ArrayList<>();
+    Sum sum2 = new Sum();
+    assertEquals(0, sum2.sumMethod(toAdd));
+  }
+
+  @Test
+  public void (){
+    ArrayList<Integer> toAdd = new ArrayList<>();
+    Sum sum2 = new Sum();
+    assertEquals(0, sum2.sumMethod(toAdd));
+  }
 }
