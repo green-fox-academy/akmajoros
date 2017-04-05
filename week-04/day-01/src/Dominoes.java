@@ -7,7 +7,7 @@ public class Dominoes {
     List<Domino> orderedDominos = new ArrayList<>();
     orderedDominos.add(dominoes.get(0));
 
-    for (int i = 0; i < dominoes.size(); i++) {
+    for (int i = 0; i  < dominoes.size(); i++) {
       int[] currentDomino = orderedDominos.get(i).getValues();
       for (int j = 1; j < dominoes.size(); j++) {
         int[] nextDomino = dominoes.get(j).getValues();
