@@ -24,9 +24,10 @@ class SumTest {
   }
 
   @Test
-  public void (){
+  public void oneElement(){
     ArrayList<Integer> toAdd = new ArrayList<>();
     Sum sum2 = new Sum();
-    assertEquals(0, sum2.sumMethod(toAdd));
+    toAdd.add(38);
+    assertEquals(38, sum2.sumMethod(toAdd));
   }
 }
