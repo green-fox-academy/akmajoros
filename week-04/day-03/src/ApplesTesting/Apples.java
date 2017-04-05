@@ -8,6 +8,6 @@ package ApplesTesting;
    }
 
    public String getApple(){
-     return "noapple";
+     return apple;
    }
 }
