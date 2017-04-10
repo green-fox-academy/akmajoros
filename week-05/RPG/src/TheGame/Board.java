@@ -1,3 +1,5 @@
+package TheGame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -9,8 +11,6 @@ public class Board extends JComponent implements KeyListener {
   int testBoxY;
 
   public Board() {
-    testBoxX = 300;
-    testBoxY = 300;
 
     // set the size of your draw board
     setPreferredSize(new Dimension(720, 720));
@@ -19,12 +19,14 @@ public class Board extends JComponent implements KeyListener {
 
   @Override
   public void paint(Graphics graphics) {
-    super.paint(graphics);
-    graphics.fillRect(testBoxX, testBoxY, 100, 100);
-    // here you have a 720x720 canvas
-    // you can create and draw an image using the class below e.g.
-    PositionedImage image = new PositionedImage("src/assets/boss.png", 300, 300);
-    image.draw(graphics);
+    int startPoint = 0;
+    int tileSize = 71;
+    for (int i = 0; i < 720 - tileSize; i += tileSize) {
+      for (int j = 0; j < 720 - tileSize; j += tileSize) {
+        PositionedImage image = new PositionedImage("src/assets/floor.png", i, j);
+        image.draw(graphics);
+      }
+    }
   }
 
   public static void main(String[] args) {
@@ -40,7 +42,7 @@ public class Board extends JComponent implements KeyListener {
     // with the system calling one of the below 3 methods
     frame.addKeyListener(board);
     // Notice (at the top) that we can only do this
-    // because this Board class (the type of the board object) is also a KeyListener
+    // because this TheGame.Board class (the type of the board object) is also a KeyListener
   }
 
   // To be a KeyListener the class needs to have these 3 methods in it
