@@ -7,12 +7,12 @@ import java.awt.event.KeyListener;
 
 public class Board extends JComponent implements KeyListener {
 
-  int testBoxX;
-  int testBoxY;
+  int canvasSize = 720;
+  int tileSize = 71;
+  int heroStartX = 0;
+  int heroStartY = 0;
 
   public Board() {
-
-    // set the size of your draw board
     setPreferredSize(new Dimension(720, 720));
     setVisible(true);
   }
@@ -20,13 +20,14 @@ public class Board extends JComponent implements KeyListener {
   @Override
   public void paint(Graphics graphics) {
     int startPoint = 0;
-    int tileSize = 71;
-    for (int i = 0; i < 720 - tileSize; i += tileSize) {
-      for (int j = 0; j < 720 - tileSize; j += tileSize) {
+    for (int i = 0; i < canvasSize - tileSize; i += tileSize) {
+      for (int j = 0; j < canvasSize - tileSize; j += tileSize) {
         PositionedImage image = new PositionedImage("src/assets/floor.png", i, j);
         image.draw(graphics);
       }
     }
+    PositionedImage image = new PositionedImage("src/assets/hero-down.png", heroStartX, heroStartY);
+    image.draw(graphics);
   }
 
   public static void main(String[] args) {
@@ -37,15 +38,9 @@ public class Board extends JComponent implements KeyListener {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
     frame.pack();
-    // Here is how you can add a key event listener
-    // The board object will be notified when hitting any key
-    // with the system calling one of the below 3 methods
     frame.addKeyListener(board);
-    // Notice (at the top) that we can only do this
-    // because this TheGame.Board class (the type of the board object) is also a KeyListener
   }
 
-  // To be a KeyListener the class needs to have these 3 methods in it
   @Override
   public void keyTyped(KeyEvent e) {
 
@@ -56,20 +51,17 @@ public class Board extends JComponent implements KeyListener {
 
   }
 
-  // But actually we can use just this one for our goals here
   @Override
   public void keyReleased(KeyEvent e) {
-    // When the up or down keys hit, we change the position of our box
     if (e.getKeyCode() == KeyEvent.VK_UP) {
-      testBoxY -= 100;
+      heroStartY -= tileSize;
     } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-      testBoxY += 100;
+      heroStartY += tileSize;
     } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-      testBoxX -= 100;
+      heroStartX -= tileSize;
     } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-      testBoxX += 100;
+      heroStartX += tileSize;
     }
-    // and redraw to have a new picture with the new coordinates
     invalidate();
     repaint();
   }
