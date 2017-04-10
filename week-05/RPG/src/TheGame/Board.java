@@ -19,14 +19,9 @@ public class Board extends JComponent implements KeyListener {
 
   @Override
   public void paint(Graphics graphics) {
-    int startPoint = 0;
-    for (int i = 0; i < canvasSize - tileSize; i += tileSize) {
-      for (int j = 0; j < canvasSize - tileSize; j += tileSize) {
-        PositionedImage image = new PositionedImage("src/assets/floor.png", i, j);
-        image.draw(graphics);
-      }
-    }
     PositionedImage image = new PositionedImage("src/assets/hero-down.png", heroStartX, heroStartY);
+    Tile tile = new Tile();
+    tile.drawTile(graphics);
     image.draw(graphics);
   }
 
