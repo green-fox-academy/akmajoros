@@ -6,11 +6,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Board extends JComponent implements KeyListener {
-
-  int canvasSize = 720;
-  int tileSize = 71;
   int heroStartX = 0;
   int heroStartY = 0;
+  int canvasSize = 720;
+  int tileSize = 71;
 
   public Board() {
     setPreferredSize(new Dimension(720, 720));
@@ -21,12 +20,12 @@ public class Board extends JComponent implements KeyListener {
   public void paint(Graphics graphics) {
     PositionedImage image = new PositionedImage("src/assets/hero-down.png", heroStartX, heroStartY);
     Tile tile = new Tile();
-    tile.drawTile(graphics);
+    tile.drawWall("src/assets/walls.csv");
+    tile.drawTiles(graphics);
     image.draw(graphics);
   }
 
   public static void main(String[] args) {
-    // Here is how you set up a new window and adding our board to it
     JFrame frame = new JFrame("RPG Game");
     Board board = new Board();
     frame.add(board);
