@@ -8,8 +8,8 @@ import java.awt.event.KeyListener;
 public class Board extends JComponent implements KeyListener {
   int canvasSize = 720;
   int tileSize = 71;
-  int monsterX = (int) Math.random() * 10;
-  int monsterY = (int) Math.random() * 10;
+  int monsterX = 3 + (int) Math.random() * 10;
+  int monsterY = 3 + (int) Math.random() * 10;
   Tile tile;
   Hero hero = new Hero(0, 0);
   Monster skeleton = new Monster(monsterX * tileSize, monsterY * tileSize);
@@ -18,13 +18,6 @@ public class Board extends JComponent implements KeyListener {
   public Board() {
     setPreferredSize(new Dimension(canvasSize, canvasSize));
     setVisible(true);
-  }
-
-  public void monsterGenerator (Graphics graphics){
-    for (int i = 0; i <= skeleton.skeletonNumber; i++){
-
-      skeleton.draw(graphics);
-    }
   }
 
   @Override
