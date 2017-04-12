@@ -8,9 +8,9 @@ import java.awt.event.KeyListener;
 public class Board extends JComponent implements KeyListener {
   int canvasSize = 720;
   int tileSize = 71;
-  Tile tile;
   int monsterX = (int) Math.random() * 10;
   int monsterY = (int) Math.random() * 10;
+  Tile tile;
   Hero hero = new Hero(0, 0);
   Monster skeleton = new Monster(monsterX * tileSize, monsterY * tileSize);
 
@@ -22,6 +22,7 @@ public class Board extends JComponent implements KeyListener {
 
   public void monsterGenerator (Graphics graphics){
     for (int i = 0; i <= skeleton.skeletonNumber; i++){
+
       skeleton.draw(graphics);
     }
   }
