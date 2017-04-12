@@ -1,53 +1,53 @@
 package TheGame;
 
 import java.awt.*;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
 import java.util.List;
 
 public class Tile extends Board {
   int tileSize;
-  String[][] wallsAll = new String[10][10];
-  Path filePath;
+  int posX;
+  int posY;
+  String[][] fields = new String[10][10];
+  Path walls;
 
-  void drawWall(String pathStuff) {
-
-    this.filePath = Paths.get(pathStuff);
+  public void fillFields(String levelPath) {
+    this.walls = Paths.get(levelPath);
     try {
-      List<String> walls = Files.readAllLines(filePath);
-      for (int i = 0; i < walls.size(); i++) {
-        String[] row = walls.get(i).split(";");
-        wallsAll[i] = row;
+      List<String> lines = Files.readAllLines(walls);
+      for (int i = 0; i < lines.size(); i++) {
+        String[] row = lines.get(i).split(";");
+        fields[i] = row;
       }
     } catch (Exception e) {
-      e.printStackTrace();
     }
   }
 
-  boolean isWall (int x, int y) {
-    if (wallsAll[x][y].equals("1")){
+  public Tile() {
+  }
+
+  public boolean isWall(int x, int y) {
+    if ((fields[x][y]).equals("1")) {
       return true;
     } else {
       return false;
     }
   }
 
-  void drawTiles(Graphics graphics) {
-    tileSize = 72;
+  public void paintTile(Graphics graphics) {
+    tileSize = 71;
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
-        if (!isWall(i, j)){
-          PositionedImage tile = new PositionedImage("src/assets/floor.png", j * tileSize, i * tileSize);
-          tile.draw(graphics);
+        if (!isWall(i, j)) {
+          GameObject image = new GameObject(ImageLoader.getInstance().FLOOR, i * tileSize, j * tileSize);
+          image.draw(graphics);
         } else {
-          PositionedImage tile = new PositionedImage("src/assets/wall.png", j * tileSize, i * tileSize);
-          tile.draw(graphics);
+          GameObject image = new GameObject(ImageLoader.getInstance().WALL, i * tileSize, j * tileSize);
+          image.draw(graphics);
         }
       }
     }
   }
-
 }

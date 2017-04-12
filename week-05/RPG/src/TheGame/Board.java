@@ -6,23 +6,24 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Board extends JComponent implements KeyListener {
-  int heroStartX = 0;
-  int heroStartY = 0;
   int canvasSize = 720;
   int tileSize = 71;
+  Tile tile;
+  Hero hero = new Hero(0, 0);
+
 
   public Board() {
-    setPreferredSize(new Dimension(720, 720));
+    setPreferredSize(new Dimension(canvasSize, canvasSize));
     setVisible(true);
   }
 
   @Override
   public void paint(Graphics graphics) {
-    PositionedImage image = new PositionedImage("src/assets/hero-down.png", heroStartX, heroStartY);
-    Tile tile = new Tile();
-    tile.drawWall("src/assets/walls.csv");
-    tile.drawTiles(graphics);
-    image.draw(graphics);
+    super.paint(graphics);
+    tile = new Tile();
+    tile.fillFields("src/assets/walls.csv");
+    tile.paintTile(graphics);
+    hero.draw(graphics);
   }
 
   public static void main(String[] args) {
@@ -37,26 +38,28 @@ public class Board extends JComponent implements KeyListener {
 
   @Override
   public void keyTyped(KeyEvent e) {
-
   }
 
   @Override
   public void keyPressed(KeyEvent e) {
-
   }
 
   @Override
   public void keyReleased(KeyEvent e) {
-    if (e.getKeyCode() == KeyEvent.VK_UP && e.getKeyCode() != tileSize) {
-      heroStartY -= tileSize;
-    } else if(e.getKeyCode() == KeyEvent.VK_DOWN && e.getKeyCode() != tileSize) {
-      heroStartY += tileSize;
-    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && e.getKeyCode() != tileSize) {
-      heroStartX -= tileSize;
-    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && e.getKeyCode() != tileSize) {
-      heroStartX += tileSize;
+    int currentPosX = hero.posX;
+    int currentPosY = hero.posY;
+    int x = currentPosX / tileSize;
+    int y = currentPosY / tileSize;
+
+    if (e.getKeyCode() == KeyEvent.VK_UP && currentPosY >= tileSize && !tile.isWall(x, y - 1)) {
+      hero.moveUp();
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && currentPosY < tileSize * 9 && !tile.isWall(x, y + 1)) {
+      hero.moveDown();
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && currentPosX >= tileSize && !tile.isWall(x - 1, y)) {
+      hero.moveLeft();
+    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && currentPosX < tileSize * 9 && !tile.isWall(x + 1, y)) {
+      hero.moveRight();
     }
-    invalidate();
     repaint();
   }
 }
