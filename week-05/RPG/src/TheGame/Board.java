@@ -9,12 +9,21 @@ public class Board extends JComponent implements KeyListener {
   int canvasSize = 720;
   int tileSize = 71;
   Tile tile;
+  int monsterX = (int) Math.random() * 10;
+  int monsterY = (int) Math.random() * 10;
   Hero hero = new Hero(0, 0);
+  Monster skeleton = new Monster(monsterX * tileSize, monsterY * tileSize);
 
 
   public Board() {
     setPreferredSize(new Dimension(canvasSize, canvasSize));
     setVisible(true);
+  }
+
+  public void monsterGenerator (Graphics graphics){
+    for (int i = 0; i <= skeleton.skeletonNumber; i++){
+      skeleton.draw(graphics);
+    }
   }
 
   @Override
@@ -24,6 +33,7 @@ public class Board extends JComponent implements KeyListener {
     tile.fillFields("src/assets/walls.csv");
     tile.paintTile(graphics);
     hero.draw(graphics);
+    skeleton.draw(graphics);
   }
 
   public static void main(String[] args) {
