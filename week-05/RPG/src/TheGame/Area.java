@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class Tile extends Board {
+public class Area extends Board {
   int tileSize;
   int posX;
   int posY;
@@ -25,7 +25,7 @@ public class Tile extends Board {
     }
   }
 
-  public Tile() {
+  public Area() {
   }
 
   public boolean isWall(int x, int y) {

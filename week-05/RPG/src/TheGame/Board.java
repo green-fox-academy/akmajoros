@@ -6,18 +6,24 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Board extends JComponent implements KeyListener {
-  int canvasSize = 720;
-  int tileSize = 71;
-  int monsterX = 3 + (int) Math.random() * 10;
-  int monsterY = 3 + (int) Math.random() * 10;
-  Tile tile;
+  final static int canvasSize = 720;
+  final static int tileSize = 71;
+  Area area;
   Hero hero = new Hero(0, 0);
-  Monster skeleton = new Monster(monsterX * tileSize, monsterY * tileSize);
+  Monster skeleton;
 
 
   public Board() {
     setPreferredSize(new Dimension(canvasSize, canvasSize));
     setVisible(true);
+  }
+
+  public void skeletonDrawer(){
+    int monsterNumber = 3 + (int) Math.random() * 3;
+    for (int i = 0; i < monsterNumber; i++){
+      int monsterX = (int) Math.random() * 10;
+      int monsterY = (int) Math.random() * 10;
+    }
   }
 
   @Override
@@ -27,7 +33,6 @@ public class Board extends JComponent implements KeyListener {
     tile.fillFields("src/assets/walls.csv");
     tile.paintTile(graphics);
     hero.draw(graphics);
-    skeleton.draw(graphics);
   }
 
   public static void main(String[] args) {
