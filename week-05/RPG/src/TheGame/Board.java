@@ -4,35 +4,55 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.rmi.server.Skeleton;
+import java.util.*;
+import java.util.List;
 
 public class Board extends JComponent implements KeyListener {
   final static int canvasSize = 720;
-  final static int tileSize = 71;
+  final static int tileSize = 72;
+  final static int columns = 10;
+  final static int rows = 10;
   Area area;
-  Hero hero = new Hero(0, 0);
+  Hero hero;
   Monster skeleton;
+  List<Monster> skeletonList;
 
 
   public Board() {
+    area = new Area();
+    area.fillFields("src/assets/walls.csv");
+    hero = new Hero(0, 0);
+    skeletonList = new ArrayList<>();
+    skeletonGenerator();
+
     setPreferredSize(new Dimension(canvasSize, canvasSize));
     setVisible(true);
   }
 
-  public void skeletonDrawer(){
-    int monsterNumber = 3 + (int) Math.random() * 3;
+  public void skeletonGenerator(){
+    int monsterNumber = 3 + (int) (Math.random() * 3);
     for (int i = 0; i < monsterNumber; i++){
-      int monsterX = (int) Math.random() * 10;
-      int monsterY = (int) Math.random() * 10;
+      int monsterX = (int) (Math.random() * columns);
+      int monsterY = (int) (Math.random() * rows);
+      while (area.isWall(monsterX, monsterY)){
+        monsterX = (int) (Math.random() * columns);
+        monsterY = (int) (Math.random() * rows);
+      }
+      skeleton = new Monster(monsterX * tileSize,
+                monsterY * tileSize);
+      skeletonList.add(skeleton);
     }
   }
 
   @Override
   public void paint(Graphics graphics) {
     super.paint(graphics);
-    tile = new Tile();
-    tile.fillFields("src/assets/walls.csv");
-    tile.paintTile(graphics);
+    area.paintTile(graphics);
     hero.draw(graphics);
+    for (Monster character : skeletonList) {
+      character.draw(graphics);
+    }
   }
 
   public static void main(String[] args) {
@@ -60,13 +80,13 @@ public class Board extends JComponent implements KeyListener {
     int x = currentPosX / tileSize;
     int y = currentPosY / tileSize;
 
-    if (e.getKeyCode() == KeyEvent.VK_UP && currentPosY >= tileSize && !tile.isWall(x, y - 1)) {
+    if (e.getKeyCode() == KeyEvent.VK_UP && currentPosY >= tileSize && !area.isWall(x, y - 1)) {
       hero.moveUp();
-    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && currentPosY < tileSize * 9 && !tile.isWall(x, y + 1)) {
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && currentPosY < tileSize * 9 && !area.isWall(x, y + 1)) {
       hero.moveDown();
-    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && currentPosX >= tileSize && !tile.isWall(x - 1, y)) {
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && currentPosX >= tileSize && !area.isWall(x - 1, y)) {
       hero.moveLeft();
-    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && currentPosX < tileSize * 9 && !tile.isWall(x + 1, y)) {
+    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && currentPosX < tileSize * 9 && !area.isWall(x + 1, y)) {
       hero.moveRight();
     }
     repaint();

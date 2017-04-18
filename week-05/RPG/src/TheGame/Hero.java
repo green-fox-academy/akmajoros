@@ -2,7 +2,7 @@ package TheGame;
 
 public class Hero extends Character {
 
-  int tileSize = 71;
+  int tileSize = 72;
 
   public Hero(int posX, int posY) {
     super(ImageLoader.getInstance().HERO_DOWN, posX, posY);

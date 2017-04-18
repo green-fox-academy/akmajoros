@@ -6,11 +6,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class Area extends Board {
+public class Area {
   int tileSize;
   int posX;
   int posY;
-  String[][] fields = new String[10][10];
+  String[][] fields = new String[Board.columns][Board.rows];
   Path walls;
 
   public void fillFields(String levelPath) {
@@ -29,15 +29,15 @@ public class Area extends Board {
   }
 
   public boolean isWall(int x, int y) {
-    if ((fields[x][y]).equals("1")) {
-      return true;
-    } else {
-      return false;
-    }
+      if ((fields[x][y]).equals("1")) {
+        return true;
+      } else {
+        return false;
+      }
   }
 
   public void paintTile(Graphics graphics) {
-    tileSize = 71;
+    int tileSize = 72;
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
         if (!isWall(i, j)) {
