@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf Exercise #1</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<!--/*@thymesVar id="bankAccount" type="com.greenfoxacademy.thymeleafstuff.model.BankAccount"*/-->
+<p  th:text="'Name: ' + ${bankAccount.getName()} + ', balance: ' + ${#numbers.formatDecimal(bankAccount.getBalance(),3,2, 'POINT')} +
+', animal type: ' + ${bankAccount.getAnimalType()} ">
+    .</p>
+
+</body>
+</html>
