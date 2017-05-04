@@ -1,26 +1,24 @@
 package com.greenfoxacademy.thymeleafstuff.model;
 
+import lombok.Getter;
+
+@Getter
 public class BankAccount {
 
-  String name;
-  int balance;
-  String animalType;
+  private final String name;
+  private final String animalType;
+  private float balance;
+  private boolean isKing = false;
 
-  public BankAccount (String name, int balance, String animalType) {
+  public BankAccount(String name, String balance, String animalType) {
     this.name = name;
-    this.balance = balance;
     this.animalType = animalType;
+    this.balance = Float.parseFloat(balance);
   }
 
-  public String getName() {
-    return name;
+  public BankAccount(String name, String animalType, String balance, boolean isKing) {
+    this(name, animalType, balance);
+    this.isKing = isKing;
   }
 
-  public int getBalance() {
-    return balance;
-  }
-
-  public String getAnimalType() {
-    return animalType;
-  }
 }
