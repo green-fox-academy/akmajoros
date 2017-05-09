@@ -8,7 +8,7 @@ public class HelloWorld {
   }
 
   public String getMessage() {
-    System.out.println("Your message" + message);
+    System.out.println("Your message: " + message);
     return message;
   }
 }
