@@ -1,4 +1,4 @@
-package com.greenfoxacademy.todoWithH2.model;
+package com.greenfoxacademy.todosql.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@Table(name = "todos")
 public class Todo {
 
   @Id
@@ -20,7 +21,10 @@ public class Todo {
   public Todo() {
   }
 
-  public Todo(String title){
+  public Todo(String title, boolean isDone, boolean isUrgent){
     this.title = title;
+    this.isDone = isDone;
+    this.isUrgent = isUrgent;
+
   }
 }

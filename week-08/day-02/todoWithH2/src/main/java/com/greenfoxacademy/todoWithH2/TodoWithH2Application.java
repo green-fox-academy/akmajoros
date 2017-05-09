@@ -19,6 +19,10 @@ public class TodoWithH2Application implements CommandLineRunner {
 
 	@Override
 	public void run(String...args) throws Exception {
-		repository.save(new Todo("I should really go and do some sport today!"));
+		repository.save(new Todo("Start the day"));
+		repository.save(new Todo("Finish H2 Workshop"));
+		repository.save(new Todo("Finish JPA Workshop"));
+		repository.save(new Todo("Create a CRUD project"));
+    repository.save(new Todo("I have to learn Object Relational Mapping!"));
 	}
 }
