@@ -25,4 +25,10 @@ public class MainRestController {
     Greeter greeter = new Greeter(name, title);
     return greeter;
   }
+
+  @GetMapping(value = "/appenda/{appendable}")
+  public AppendA appender(@RequestParam(value = "input") String input){
+    AppendA appendA = new AppendA(input);
+    return appendA;
+  }
 }
