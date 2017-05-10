@@ -9,6 +9,6 @@ public class AppendA {
   String appended;
 
   public AppendA(String input){
-    this.appended = input+"a";
+    this.appended = input + "a";
   }
 }

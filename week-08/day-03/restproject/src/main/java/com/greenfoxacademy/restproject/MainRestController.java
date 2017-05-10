@@ -1,10 +1,7 @@
 package com.greenfoxacademy.restproject;
 
 import org.springframework.web.bind.MissingServletRequestParameterException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MainRestController {
@@ -27,7 +24,7 @@ public class MainRestController {
   }
 
   @GetMapping(value = "/appenda/{appendable}")
-  public AppendA appender(@RequestParam(value = "input") String input){
+  public AppendA appender(@PathVariable(value = "appendable") String input){
     AppendA appendA = new AppendA(input);
     return appendA;
   }
