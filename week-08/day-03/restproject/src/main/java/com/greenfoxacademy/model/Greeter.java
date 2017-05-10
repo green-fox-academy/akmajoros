@@ -1,4 +1,4 @@
-package com.greenfoxacademy.restproject;
+package com.greenfoxacademy.model;
 
 import lombok.Getter;
 import lombok.Setter;
