@@ -47,10 +47,13 @@ public class MainRestController {
   }
 
   @PostMapping(value = "/arrays")
-  public ArrayHandler arrayHandler(@RequestBody ArrayHandler arrayHandler) {
+  public RestMessageObject restMessageObject(@RequestBody ArrayHandler arrayHandler) {
+    if (arrayHandler.whatGetter().equals("doubler")) {
+      return arrayHandler.doubler();
+    } else {
       arrayHandler.sum();
       arrayHandler.multiply();
-      arrayHandler.doubler();
+    }
     return arrayHandler;
   }
 }

@@ -7,13 +7,18 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArrayHandler {
+public class ArrayHandler implements RestMessageObject {
   @Setter
   private String what;
   @Setter
   private List<Integer> numbers = new ArrayList<>();
+  private List<Integer> resultList = new ArrayList<>();
   @Getter
-  private List<Integer> result = new ArrayList<>();
+  private int result;
+
+  public String whatGetter(){
+    return what;
+  }
 
   public void sum() {
     if (what.equals("sum")) {
@@ -21,7 +26,7 @@ public class ArrayHandler {
       for (int i = 0; i < numbers.size(); i++) {
         sum += numbers.get(i);
       }
-      result.add(sum);
+      result = sum;
     }
   }
 
@@ -31,18 +36,18 @@ public class ArrayHandler {
       for (int i = 0; i < numbers.size(); i++) {
         multiply *= numbers.get(i);
       }
-      result.add(multiply);
+      result = multiply;
     }
   }
 
-  public void doubler() {
+  public ArrayHandler2 doubler() {
     if (what.equals("doubler")) {
       int toDouble = 2;
       for (int i = 0; i < numbers.size(); i++) {
         toDouble *= numbers.get(i);
-        result.add(toDouble);
+        resultList.add(toDouble);
         toDouble = 2;
       }
-    }
+    } return new ArrayHandler2(resultList);
   }
 }
