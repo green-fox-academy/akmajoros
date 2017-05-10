@@ -1,9 +1,6 @@
 package com.greenfoxacademy.controller;
 
-import com.greenfoxacademy.model.AppendA;
-import com.greenfoxacademy.model.Greeter;
-import com.greenfoxacademy.model.DoUntil;
-import com.greenfoxacademy.model.Doubling;
+import com.greenfoxacademy.model.*;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
@@ -47,5 +44,13 @@ public class MainRestController {
       doUntil.factor();
     }
     return doUntil;
+  }
+
+  @PostMapping(value = "/arrays")
+  public ArrayHandler arrayHandler(@RequestBody ArrayHandler arrayHandler) {
+      arrayHandler.sum();
+      arrayHandler.multiply();
+      arrayHandler.doubler();
+    return arrayHandler;
   }
 }
