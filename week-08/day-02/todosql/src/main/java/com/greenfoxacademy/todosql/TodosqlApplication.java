@@ -19,10 +19,5 @@ public class TodosqlApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String...args) throws Exception {
-		repository.save(new Todo("Start the day", true, false));
-		repository.save(new Todo("Finish H2 Workshop", true, true));
-		repository.save(new Todo("Finish JPA Workshop", false, true));
-		repository.save(new Todo("Create a CRUD project", true, true));
-		repository.save(new Todo("I have to learn Object Relational Mapping!", false, true));
 	}
 }
