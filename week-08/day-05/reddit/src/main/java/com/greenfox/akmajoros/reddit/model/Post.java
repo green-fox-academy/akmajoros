@@ -28,7 +28,11 @@ public class Post {
   long score;
 
   public void upVote(){
-    score ++;
+    score++;
+  }
+
+  public void downVote() {
+    score--;
   }
 
 }

@@ -27,10 +27,19 @@ public class MainRestController {
     return postRepository.save(post);
   }
 
-  @PostMapping(value = "/post/{id}/upvote")
+  @PutMapping (value = "/post/{id}/upvote")
   public Post upVotePost(@PathVariable(value = "id") long id) {
     Post post = postRepository.findOne(id);
     post.upVote();
+    postRepository.save(post);
+
+    return post;
+  }
+
+  @PutMapping (value = "/post/{id}/downvote")
+  public Post downVotePost(@PathVariable(value = "id") long id) {
+    Post post = postRepository.findOne(id);
+    post.downVote();
     postRepository.save(post);
 
     return post;

@@ -19,10 +19,10 @@ public class RedditApp implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Post testpost = new Post();
-		testpost.setTitle("blabla");
-		testpost.setHref("9gag.com");
-		testpost.setScore(769);
-		mainAppPostRepository.save(testpost);
+		Post post = new Post();
+		post.setTitle("9gag");
+		post.setScore(13);
+		post.setHref("9gag.com");
+		mainAppPostRepository.save(post);
 	}
 }
