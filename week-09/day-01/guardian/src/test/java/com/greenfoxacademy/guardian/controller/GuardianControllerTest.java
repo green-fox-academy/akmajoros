@@ -1,34 +1,29 @@
 package com.greenfoxacademy.guardian.controller;
 
+
+import org.junit.runner.RunWith;
 import com.greenfoxacademy.guardian.GuardianApplication;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import java.nio.charset.Charset;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.core.Is.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = GuardianApplication.class)
 @WebAppConfiguration
 @EnableWebMvc
-class GuardianControllerTest {
-  @org.junit.jupiter.api.Test
-
-  private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
-          MediaType.APPLICATION_JSON.getSubtype(),
-          Charset.forName("utf8"));
+public class GuardianControllerTest {
 
   private MockMvc mockMvc;
 
@@ -41,8 +36,17 @@ class GuardianControllerTest {
   }
 
   @Test
-  public void yourFirstTest(){
+  public void grootSpeakTest() throws Exception{
+    mockMvc.perform(get("/groot").param("message", "some"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.received", is("some")))
+            .andExpect(jsonPath("$.translated", is("I am Groot!")));
+  }
 
+  @Test
+  public void grootSpeakTestTwo() throws Exception{
+    mockMvc.perform(get("/groot").param("message", ""))
+            .andExpect(jsonPath("$.error", is("I am Groot!")));
   }
 
 }

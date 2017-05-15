@@ -1,6 +1,7 @@
 package com.greenfoxacademy.guardian.controller;
 
 import com.greenfoxacademy.guardian.model.Groot;
+import com.greenfoxacademy.guardian.model.Yondu;
 import com.greenfoxacademy.guardian.service.Errorhandling;
 import com.greenfoxacademy.guardian.service.GuardianInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,11 @@ public class GuardianController {
       return new Errorhandling("I am Groot!");
     }
     return new Groot(message);
+  }
+
+  @RequestMapping(value = "/yondu")
+  public Yondu arrowSpeedCalc(@RequestParam(value = "distance") double distance,
+                              @RequestParam(value = "time") double time) {
+    return new Yondu();
   }
 }
