@@ -1,6 +1,8 @@
 package com.greenfoxacademy.guardian.controller;
 
 import com.greenfoxacademy.guardian.model.Groot;
+import com.greenfoxacademy.guardian.model.Rocket;
+import com.greenfoxacademy.guardian.model.RocketFiller;
 import com.greenfoxacademy.guardian.model.Yondu;
 import com.greenfoxacademy.guardian.service.Errorhandling;
 import com.greenfoxacademy.guardian.service.GuardianInterface;
@@ -18,6 +20,10 @@ public class GuardianController {
   Errorhandling errorhandling;
   @Autowired
   Yondu yondu;
+  @Autowired
+  Rocket rocket;
+  @Autowired
+  RocketFiller rocketFiller;
 
   @ExceptionHandler(value = MissingServletRequestParameterException.class)
   public Errorhandling missingRequestParam(){
@@ -42,5 +48,20 @@ public class GuardianController {
     yondu.setTime(time);
     yondu.setSpeed();
     return yondu;
+  }
+
+  @RequestMapping(value = "/rocket")
+  public GuardianInterface showActualCargo(){
+    return rocket;
+  }
+
+  @RequestMapping(value = "/rocket/fill")
+  public GuardianInterface fillCargo(@RequestParam(value = "caliber") String caliber,
+                                     @RequestParam(value = "amount") double amount){
+    rocketFiller.setReceived(caliber);
+    rocketFiller.setAmount(amount);
+    rocketFiller.setShipstatus(amount);
+    rocketFiller.setReady();
+    return rocketFiller;
   }
 }
