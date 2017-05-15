@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RedditApp implements CommandLineRunner {
+public class RedditApp {
 
 	@Autowired
 	PostRepository mainAppPostRepository;
@@ -17,12 +17,4 @@ public class RedditApp implements CommandLineRunner {
 		SpringApplication.run(RedditApp.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		Post post = new Post();
-		post.setTitle("9gag");
-		post.setScore(13);
-		post.setHref("9gag.com");
-		mainAppPostRepository.save(post);
-	}
 }
