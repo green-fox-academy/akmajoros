@@ -73,6 +73,6 @@ public class GuardianControllerTest {
             .andExpect(jsonPath("$.shipstatus", is("10%")))
             .andExpect(jsonPath("$.ready", is(false)));
   }
-  
+
 
 }
