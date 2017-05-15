@@ -58,6 +58,9 @@ public class GuardianController {
   @RequestMapping(value = "/rocket/fill")
   public GuardianInterface fillCargo(@RequestParam(value = "caliber") String caliber,
                                      @RequestParam(value = "amount") double amount){
+    rocket.fillCargo(caliber, amount);
+    rocket.setCargstatus();
+    rocket.setReady();
     rocketFiller.setReceived(caliber);
     rocketFiller.setAmount(amount);
     rocketFiller.setShipstatus(amount);

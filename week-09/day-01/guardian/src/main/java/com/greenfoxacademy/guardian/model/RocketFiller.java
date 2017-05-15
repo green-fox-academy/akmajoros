@@ -16,11 +16,7 @@ public class RocketFiller implements GuardianInterface {
   boolean ready;
 
   public void setReady() {
-    if (getShipstatus().equals("full")) {
-      this.ready = true;
-    } else {
-      this.ready = false;
-    }
+    this.ready = getShipstatus().equals("full");
   }
 
   public void setShipstatus(double amount){
@@ -32,6 +28,8 @@ public class RocketFiller implements GuardianInterface {
       this.shipstatus = "empty";
     } else if (amount == maxAmmo) {
       this.shipstatus = "full";
+    } else if (amount > maxAmmo) {
+      this.shipstatus = "overloaded";
     }
   }
 }
