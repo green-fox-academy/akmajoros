@@ -64,4 +64,15 @@ public class GuardianControllerTest {
             .andExpect(jsonPath("$.error", is("No distance or no time provided")));
   }
 
+  @Test
+  public void rocketTest() throws Exception{
+    mockMvc.perform(get("/rocket/fill").param("caliber", ".50").param("amount", "1250"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.received", is(".50")))
+            .andExpect(jsonPath("$.amount", is(1250.0)))
+            .andExpect(jsonPath("$.shipstatus", is("10%")))
+            .andExpect(jsonPath("$.ready", is(false)));
+  }
+  
+
 }
