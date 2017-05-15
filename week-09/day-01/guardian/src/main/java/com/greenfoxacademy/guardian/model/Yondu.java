@@ -1,22 +1,22 @@
 package com.greenfoxacademy.guardian.model;
 
+import com.greenfoxacademy.guardian.service.GuardianInterface;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-public class Yondu {
+@Component
+public class Yondu implements GuardianInterface {
   double distance;
   double time;
   double speed;
 
-  public Yondu(double distance, double time){
-    this.distance = distance;
-    this.time = time;
-    this.distance = distance/time;
+  public void setSpeed(){
+    this.speed = distance/time;
   }
 }

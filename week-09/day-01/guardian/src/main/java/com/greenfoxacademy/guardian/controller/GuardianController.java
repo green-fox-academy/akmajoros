@@ -16,6 +16,8 @@ public class GuardianController {
 
   @Autowired
   Errorhandling errorhandling;
+  @Autowired
+  Yondu yondu;
 
   @ExceptionHandler(value = MissingServletRequestParameterException.class)
   public Errorhandling missingRequestParam(){
@@ -31,8 +33,14 @@ public class GuardianController {
   }
 
   @RequestMapping(value = "/yondu")
-  public Yondu arrowSpeedCalc(@RequestParam(value = "distance") double distance,
-                              @RequestParam(value = "time") double time) {
-    return new Yondu();
+  public GuardianInterface arrowSpeedCalc(@RequestParam(value = "distance") Double distance,
+                              @RequestParam(value = "time") Double time) {
+    if(distance == null || time == null) {
+      return new Errorhandling("No distance or no time provided");
+    }
+    yondu.setDistance(distance);
+    yondu.setTime(time);
+    yondu.setSpeed();
+    return yondu;
   }
 }

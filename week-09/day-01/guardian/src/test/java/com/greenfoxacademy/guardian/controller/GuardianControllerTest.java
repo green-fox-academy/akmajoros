@@ -49,4 +49,19 @@ public class GuardianControllerTest {
             .andExpect(jsonPath("$.error", is("I am Groot!")));
   }
 
+  @Test
+  public void yonduTestOne() throws Exception{
+    mockMvc.perform(get("/yondu").param("distance", "100.0").param("time", "10.0"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.distance", is(100.0)))
+            .andExpect(jsonPath("$.time", is(10.0)))
+            .andExpect(jsonPath("$.speed", is(10.0)));
+  }
+
+  @Test
+  public void yonduTestTwo() throws Exception{
+    mockMvc.perform(get("/yondu").param("distance", "").param("time", ""))
+            .andExpect(jsonPath("$.error", is("No distance or no time provided")));
+  }
+
 }
