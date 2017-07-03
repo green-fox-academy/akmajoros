@@ -1,0 +1,5 @@
+C:\Users\HorvathGy\Greenfox\akmajoros\cs\day-01\Linq Exercises\Linq Exercises\bin\Debug\LinqExercises.exe
+C:\Users\HorvathGy\Greenfox\akmajoros\cs\day-01\Linq Exercises\Linq Exercises\bin\Debug\LinqExercises.pdb
+C:\Users\HorvathGy\Greenfox\akmajoros\cs\day-01\Linq Exercises\Linq Exercises\obj\Debug\Linq Exercises.csprojResolveAssemblyReference.cache
+C:\Users\HorvathGy\Greenfox\akmajoros\cs\day-01\Linq Exercises\Linq Exercises\obj\Debug\LinqExercises.exe
+C:\Users\HorvathGy\Greenfox\akmajoros\cs\day-01\Linq Exercises\Linq Exercises\obj\Debug\LinqExercises.pdb

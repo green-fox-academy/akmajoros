@@ -16,6 +16,7 @@ public class MainController {
 
   @Autowired
   Fox fox;
+
   List<String> allTricks;
 
   public MainController() {
@@ -63,8 +64,8 @@ public class MainController {
   }
 
   @RequestMapping(value = "/addtrick")
-  public String addTrick(@RequestParam String addTrick){
-    fox.addTrick(addTrick);
+  public String addTrick(@RequestParam String trick){
+    fox.addTrick(trick);
     return "redirect:";
   }
 

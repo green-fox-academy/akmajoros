@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface Repository extends CrudRepository<Todo, Long> {
 
-  List<Todo> findByIsDoneFalse();
+  List<Todo> findAllByIsDoneFalse();
 
 }
