@@ -5,7 +5,12 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(isAnagram("word", "word"));
+        boolean anagramChecker = isAnagram("word", "word");
+        if (anagramChecker == true){
+            System.out.println("The two words are anagrams");
+        } else {
+            System.out.println("The two words are not anagrams");
+        }
     }
 
     public static boolean isAnagram(String input1, String input2) {
